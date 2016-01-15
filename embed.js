@@ -1,8 +1,8 @@
-//管理员判断开始
+﻿//管理员判断开始
 function sskadmin(e) {
 	var ssk = '';
-	if(e.user_id==12938157){
-		ssk = '<span class="sskadmin">博主'
+	if(e.user_id==12938197){
+		ssk = '<span class="sskadmin">伟大的主人'
 	}
 	return ssk+"</span> ";
 }
