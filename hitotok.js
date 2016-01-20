@@ -1,43 +1,43 @@
-// ¼ÓÔØÒ»ÑÔµÄÈİÆ÷¡£ËùÒÔÖ±½ÓÓÃÁË document.write
+ï»¿// åŠ è½½ä¸€è¨€çš„å®¹å™¨ã€‚æ‰€ä»¥ç›´æ¥ç”¨äº† document.write
 document.write('<div id="hitokotojs"></div>');
-// Ö¸¶¨ÓÃÓÚÏÔÊ¾µÄÔªËØ
+// æŒ‡å®šç”¨äºæ˜¾ç¤ºçš„å…ƒç´ 
 var hkField = document.getElementById("hitokoto");
-// Ö¸¶¨¼ÓÔØÈİÆ÷
+// æŒ‡å®šåŠ è½½å®¹å™¨
 var hkCache = document.getElementById("hitokotojs");
-// µÈ´ıÊ±¼ä£¬°´ºÁÃë¼ÆËã
+// ç­‰å¾…æ—¶é—´ï¼ŒæŒ‰æ¯«ç§’è®¡ç®—
 var waitTime = 3500;
-// Ò»¸ö·½Ïò¹ı¶ÉÓÃµÄÖ¡Êı£¬Ã¿Ö¡ 1000 / 60 Ãë
+// ä¸€ä¸ªæ–¹å‘è¿‡æ¸¡ç”¨çš„å¸§æ•°ï¼Œæ¯å¸§ 1000 / 60 ç§’
 var fadingFrames = 18;
-// ¿ØÖÆ¶¯»­×´Ì¬µÄ Flags
+// æ§åˆ¶åŠ¨ç”»çŠ¶æ€çš„ Flags
 var isAnim = false;
 var isFadeout = false;
 var isLoaded = false;
 var animProgress = 0;
 var i = 0;
-// ÖğÖ¡¶¯»­¿ØÖÆ
+// é€å¸§åŠ¨ç”»æ§åˆ¶
 hkAnim = function() {
-    // µ±Ç°½ø¶È²½½ø
+    // å½“å‰è¿›åº¦æ­¥è¿›
     animProgress++;
     curAlphaStep = animProgress / fadingFrames;
     curAlpha = isFadeout ? (1 - curAlphaStep) : curAlphaStep;
-    // ÉèÖÃÔªËØÍ¸Ã÷¶È
+    // è®¾ç½®å…ƒç´ é€æ˜åº¦
     hkField.style.filter = "alpha(opacity=" + Math.round(curAlpha * 100) + ")";
     hkField.style.opacity = curAlpha;
-    // Èç¹ûÒ»²¿·Ö¶¯»­½áÊø
+    // å¦‚æœä¸€éƒ¨åˆ†åŠ¨ç”»ç»“æŸ
     if (animProgress >= fadingFrames) {
-        // Èç¹ûÊÇ¸Õ¸Õµ­³ö
+        // å¦‚æœæ˜¯åˆšåˆšæ·¡å‡º
         if (isFadeout) {
-            // ×¼±¸¼ÓÔØÏÂÒ»ÌõÄÚÈİ
+            // å‡†å¤‡åŠ è½½ä¸‹ä¸€æ¡å†…å®¹
             hkAnimNext()
         } else {
-            // ·ñÔòµÈ´ıÈô¸ÉÊ±¼äºó½øĞĞÏÂÒ»×é¶¯»­
+            // å¦åˆ™ç­‰å¾…è‹¥å¹²æ—¶é—´åè¿›è¡Œä¸‹ä¸€ç»„åŠ¨ç”»
             setTimeout("hkAnimPre()", waitTime)
         }
     } else {
         window.requestAnimationFrame(hkAnim)
     }
 }
-// ¼ÓÔØÒ»ÑÔÄÚÈİ£¬½«·µ»Ø retrieveHitokoto(xxxxxx) Ö¸Áî
+// åŠ è½½ä¸€è¨€å†…å®¹ï¼Œå°†è¿”å› retrieveHitokoto(xxxxxx) æŒ‡ä»¤
 hkAnimNext = function() {
     isLoaded = false;
     var hkLoader = document.createElement('script');
@@ -46,7 +46,7 @@ hkAnimNext = function() {
     hkCache.appendChild(hkLoader)
     setTimeout("checkLoaded()", (waitTime / 2));
 }
-// È¡»ØÄÚÈİ
+// å–å›å†…å®¹
 retrieveHitokoto = function(result) {
     isLoaded = true;
     var retrieved = eval(result);
@@ -56,18 +56,18 @@ retrieveHitokoto = function(result) {
     hkCache.removeChild(document.getElementById("hkLoader"));
     hkAnim()
 }
-// Èİ´í´¦Àí
+// å®¹é”™å¤„ç†
 checkLoaded = function() {
     if(!isLoaded) {
         hkCache.removeChild(document.getElementById("hkLoader"));
         hkAnimNext();
     }
 }
-// ×¼±¸ÏÂÒ»ÂÖÄÚÈİµÄÕ¹Ê¾
+// å‡†å¤‡ä¸‹ä¸€è½®å†…å®¹çš„å±•ç¤º
 hkAnimPre = function() {
     isFadeout = true;
     animProgress = 0;
     window.requestAnimationFrame(hkAnim)
 }
-// ¿ªÊ¼Ê×´Î¼ÓÔØ
+// å¼€å§‹é¦–æ¬¡åŠ è½½
 hkAnimNext();
