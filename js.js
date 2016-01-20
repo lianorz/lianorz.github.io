@@ -1,4 +1,4 @@
-// 加载一言的容器。我懒，所以直接用了 document.write
+// 加载一言的容器。所以直接用了 document.write
 document.write('<div id="hitokotojs"></div>');
 // 指定用于显示的元素
 var hkField = document.getElementById("hitokoto");
