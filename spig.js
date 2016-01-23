@@ -1,4 +1,4 @@
-/*
+﻿/*
 *作者木木
 *
 *http://www.dao-gu.com
@@ -7,7 +7,7 @@
 jQuery(document).ready(function ($) {
     $("#spig").mousedown(function (e) {
         if(e.which==3){
-        showMessage("秘密通道:<br />    <a href=\"http://www.anotherhome.net\" title=\"首页\">首页</a>    <a href=\"http://www.anotherhome.net/?page_id=366\" title=\"项目\">项目</a>    <a href=\"http://www.anotherhome.net/wp-login.php\" title=\"后台\">后台</a> ",10000);
+        showMessage("秘密通道:<br />    <a href=\"http://lz.mfvps.cn/\" title=\"首页\">首页</a>    <a href=\"http://lz.mfvps.cn/?page_id=247\" title=\"留言板\">留言板</a>    <a href=\"http://lz.mfvps.cn/wp-login.php\" title=\"后台\">后台</a> ",10000);
 }
 });
 $("#spig").bind("contextmenu", function(e) {
